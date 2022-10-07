@@ -18,11 +18,11 @@ clean_status <- read.taf("data/clean_status.csv")
 
 #set year and month for captions:
 cap_month = "October"
-cap_year = "2021"
+cap_year <- 2022
 # set year for plot claculations
-
-year = 2021
-
+year_cap = "2022"
+year = 2022
+ecoreg = "FO"
 
 #~~~~~~~~~~~~~~~#
 # A. Trends by guild
@@ -47,19 +47,19 @@ write.taf(dat,file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_pelagic.csv"),
 
 # 3. Elasmobranch
 #~~~~~~~~~~~
-plot_stock_trends(trends, guild="elasmobranch", cap_year, cap_month ,return_data = FALSE )
-ggplot2::ggsave(paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_elasmobranch.png"), path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
-
-dat <- plot_stock_trends(trends, guild="elasmobranch", cap_year , cap_month , return_data = TRUE)
-write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_elasmobranch.csv"), dir = "report" )
+# plot_stock_trends(trends, guild="elasmobranch", cap_year, cap_month ,return_data = FALSE )
+# ggplot2::ggsave(paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_elasmobranch.png"), path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
+# 
+# dat <- plot_stock_trends(trends, guild="elasmobranch", cap_year , cap_month , return_data = TRUE)
+# write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_elasmobranch.csv"), dir = "report" )
 
 # 4. Crustacean
 #~~~~~~~~~~~
-plot_stock_trends(trends, guild="crustacean", cap_year, cap_month ,return_data = FALSE )
-ggplot2::ggsave(paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_crustacean.png"), path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
-
-dat <- plot_stock_trends(trends, guild="crustacean", cap_year , cap_month , return_data = TRUE)
-write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_crustacean.csv"), dir = "report" )
+# plot_stock_trends(trends, guild="crustacean", cap_year, cap_month ,return_data = FALSE )
+# ggplot2::ggsave(paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_crustacean.png"), path = "report/", width = 178, height = 130, units = "mm", dpi = 300)
+# 
+# dat <- plot_stock_trends(trends, guild="crustacean", cap_year , cap_month , return_data = TRUE)
+# write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Trends_crustacean.csv"), dir = "report" )
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~#
@@ -143,64 +143,64 @@ dev.off()
 #~~~~~~~~~~~
 # catch_current$Status[which(catch_current$StockKeyLabel == "sol.27.20-24")] <- "GREEN"
 
-bar <- plot_CLD_bar(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-
-bar_dat <- plot_CLD_bar(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = TRUE)
-write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_benthic.csv"), dir = "report" )
-
-kobe <- plot_kobe(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-#check this file name
-png(sprintf("report/%s_FO_FO_SAG_Current_benthic.png", year),
-    width = 131.32,
-    height = 88.9,
-    units = "mm",
-    res = 300)
-p1_plot<-gridExtra::grid.arrange(kobe,
-                                 bar, ncol = 2,
-                                 respect = TRUE, top = "benthic")
-dev.off()
+# bar <- plot_CLD_bar(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# 
+# bar_dat <- plot_CLD_bar(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = TRUE)
+# write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_benthic.csv"), dir = "report" )
+# 
+# kobe <- plot_kobe(catch_current, guild = "benthic", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# #check this file name
+# png(sprintf("report/%s_FO_FO_SAG_Current_benthic.png", year),
+#     width = 131.32,
+#     height = 88.9,
+#     units = "mm",
+#     res = 300)
+# p1_plot<-gridExtra::grid.arrange(kobe,
+#                                  bar, ncol = 2,
+#                                  respect = TRUE, top = "benthic")
+# dev.off()
 
 # 4. Elasmobranch
 #~~~~~~~~~~~
 # catch_current$Status[which(catch_current$StockKeyLabel == "sol.27.20-24")] <- "GREEN"
 
-bar <- plot_CLD_bar(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-
-bar_dat <- plot_CLD_bar(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = TRUE)
-write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_elasmobranch.csv"), dir = "report" )
-
-kobe <- plot_kobe(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-#check this file name
-png(sprintf("report/%s_FO_FO_SAG_Current_elasmobranch.png", year),
-    width = 131.32,
-    height = 88.9,
-    units = "mm",
-    res = 300)
-p1_plot<-gridExtra::grid.arrange(kobe,
-                                 bar, ncol = 2,
-                                 respect = TRUE, top = "benthic")
-dev.off()
+# bar <- plot_CLD_bar(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# 
+# bar_dat <- plot_CLD_bar(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = TRUE)
+# write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_elasmobranch.csv"), dir = "report" )
+# 
+# kobe <- plot_kobe(catch_current, guild = "elasmobranch", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# #check this file name
+# png(sprintf("report/%s_FO_FO_SAG_Current_elasmobranch.png", year),
+#     width = 131.32,
+#     height = 88.9,
+#     units = "mm",
+#     res = 300)
+# p1_plot<-gridExtra::grid.arrange(kobe,
+#                                  bar, ncol = 2,
+#                                  respect = TRUE, top = "benthic")
+# dev.off()
 
 # 5. Crustacean
 #~~~~~~~~~~~
 # catch_current$Status[which(catch_current$StockKeyLabel == "sol.27.20-24")] <- "GREEN"
 
-bar <- plot_CLD_bar(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-
-bar_dat <- plot_CLD_bar(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = TRUE)
-write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_crustacean.csv"), dir = "report" )
-
-kobe <- plot_kobe(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = FALSE)
-#check this file name
-png(sprintf("report/%s_FO_FO_SAG_Current_crustacean.png", year),
-    width = 131.32,
-    height = 88.9,
-    units = "mm",
-    res = 300)
-p1_plot<-gridExtra::grid.arrange(kobe,
-                                 bar, ncol = 2,
-                                 respect = TRUE, top = "benthic")
-dev.off()
+# bar <- plot_CLD_bar(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# 
+# bar_dat <- plot_CLD_bar(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = TRUE)
+# write.taf(bar_dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Current_crustacean.csv"), dir = "report" )
+# 
+# kobe <- plot_kobe(catch_current, guild = "crustacean", caption = TRUE, cap_year , cap_month , return_data = FALSE)
+# #check this file name
+# png(sprintf("report/%s_FO_FO_SAG_Current_crustacean.png", year),
+#     width = 131.32,
+#     height = 88.9,
+#     units = "mm",
+#     res = 300)
+# p1_plot<-gridExtra::grid.arrange(kobe,
+#                                  bar, ncol = 2,
+#                                  respect = TRUE, top = "benthic")
+# dev.off()
 
 
 
@@ -227,22 +227,22 @@ dev.off()
 #~~~~~~~~~~~~~~~#
 # C. Discards
 #~~~~~~~~~~~~~~~#
-discardsA <- plot_discard_trends(catch_trends, year, cap_year, cap_month )
-
-dat <- plot_discard_trends(catch_trends, year, cap_year , cap_month , return_data = TRUE)
-write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Discards_trends.csv"), dir = "report" )
-
-catch_trends2 <- catch_trends %>% filter(discards > 0)
-discardsB <- plot_discard_current(catch_trends2, year,position_letter = "b)", cap_year , cap_month , caption = FALSE)
-
-discardsC <- plot_discard_current(catch_trends, year,position_letter = "c)", cap_year , cap_month )
-
-#Need to change order?
-dat <- plot_discard_current(catch_trends, year, cap_year, cap_month , return_data = TRUE)
-write.taf(dat, file =paste0(year_cap,"_", ecoreg, "_FO_SAG_Discards_current.csv"),dir = "report" )
-
-cowplot::plot_grid(discardsA, discardsB, discardsC, align = "h",nrow = 1, rel_widths = 1, rel_heights = 1)
-ggplot2::ggsave(paste0(year_cap,"_", ecoreg, "_FO_SAG_Discards.png"),path = "report/", width = 220.32, height = 88.9, units = "mm", dpi = 300)
+# discardsA <- plot_discard_trends(catch_trends, year, cap_year, cap_month )
+# 
+# dat <- plot_discard_trends(catch_trends, year, cap_year , cap_month , return_data = TRUE)
+# write.taf(dat, file =paste0(year_cap, "_", ecoreg, "_FO_SAG_Discards_trends.csv"), dir = "report" )
+# 
+# catch_trends2 <- catch_trends %>% filter(discards > 0)
+# discardsB <- plot_discard_current(catch_trends2, year,position_letter = "b)", cap_year , cap_month , caption = FALSE)
+# 
+# discardsC <- plot_discard_current(catch_trends, year,position_letter = "c)", cap_year , cap_month )
+# 
+# #Need to change order?
+# dat <- plot_discard_current(catch_trends, year, cap_year, cap_month , return_data = TRUE)
+# write.taf(dat, file =paste0(year_cap,"_", ecoreg, "_FO_SAG_Discards_current.csv"),dir = "report" )
+# 
+# cowplot::plot_grid(discardsA, discardsB, discardsC, align = "h",nrow = 1, rel_widths = 1, rel_heights = 1)
+# ggplot2::ggsave(paste0(year_cap,"_", ecoreg, "_FO_SAG_Discards.png"),path = "report/", width = 220.32, height = 88.9, units = "mm", dpi = 300)
 
 # review units in x labels in b and c!!
 
@@ -276,7 +276,7 @@ dat <- format_annex_table(clean_status, year)
 
 
 # write.csv(dat, file = paste0(year_cap,"_", ecoreg, "_FO_SAG_annex_table.csv"))
-html_annex_table(dat, cap_year, ecoreg_code)
+format_annex_table_html(dat, cap_year, ecoreg_code)
 
 
 write.taf(dat, file = paste0(year_cap,"_", ecoreg, "_FO_SAG_annex_table.csv"), dir = "report", quote=TRUE)

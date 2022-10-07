@@ -1,11 +1,10 @@
 taf.library(icesFO)
 
+out <- load_sag(2022, "Faroes")
 
-summary <- load_sag_summary(2021)
-write.taf(summary, file = "bootstrap/data/SAG_data/SAG_summary.csv")
+sag_complete <- out
+write.taf(out, file = "SAG_complete_BtS.csv", quote = TRUE)
 
-refpts <- load_sag_refpts(2021)
-write.taf(refpts, file = "bootstrap/data/SAG_data/SAG_refpts.csv")
 
-status <- load_sag_status(2021)
+status <- load_sag_status(2022)
 write.taf(status, file = "bootstrap/data/SAG_data/SAG_status.csv", quote = TRUE)

@@ -23,8 +23,8 @@ tibble(prelim)
 # catch_dat <-
 #   format_catches(2020, "Faroes",
 #     hist, official, prelim, species_list, sid)
-catch_dat <-  format_catches(2021, "Faroes",
-    hist, official, prelim, species_list, sid)
+catch_dat <-  format_catches(2022, "Faroes",
+    hist, official, NULL, species_list, sid)
 
 write.taf(catch_dat, dir = "data", quote = TRUE)
 
@@ -37,8 +37,8 @@ sag_sum <- read.taf("bootstrap/data/SAG_data/SAG_summary.csv")
 sag_refpts <- read.taf("bootstrap/data/SAG_data/SAG_refpts.csv")
 sag_status <- read.taf("bootstrap/data/SAG_data/SAG_status.csv")
 
-clean_sag <- format_sag(sag_sum, sag_refpts, 2021, "Faroes")
-clean_status <- format_sag_status(sag_status, 2021, "Faroes")
+clean_sag <- format_sag(sag_complete, sid)
+clean_status <- format_sag_status(status, 2022, "Faroes")
 
 check <- unique(clean_sag$StockKeyLabel)
 unique(clean_sag$StockKeyLabel)
@@ -57,7 +57,7 @@ setdiff(FO_2020FO_StockList_updated$StockKeyLabel,clean_sag$StockKeyLabel)
 
 #check
 setdiff(clean_sag$StockKeyLabel, FO_2020FO_StockList_updated$StockKeyLabel)
-#40
+#46
 
 unique(clean_status$StockKeyLabel)
 
@@ -69,16 +69,20 @@ setdiff(FO_2020FO_StockList_updated$StockKeyLabel,clean_status$StockKeyLabel)
 ## filter clean sag and clean status for the new list of stocks
 clean_sag <- clean_sag %>% filter(StockKeyLabel %in% FO_2020FO_StockList_updated$StockKeyLabel)
 unique(clean_sag$StockKeyLabel)
-# [1] "aru.27.5b6a"          "bli.27.5b67"          "cod.27.5b1"           "cod.27.5b2"           "ghl.27.561214"        "had.27.5b"
-# [7] "her.27.1-24a514a"     "lin.27.5b"            "mac.27.nea"           "pok.27.5b"            "usk.27.3a45b6a7-912b" "whb.27.1-91214"  
+# [1] "ghl.27.561214"        "aru.27.5b6a"          "lin.27.5b"           
+# [4] "usk.27.3a45b6a7-912b" "her.27.1-24a514a"     "whb.27.1-91214"      
+# [7] "mac.27.nea"           "cod.27.5b1"           "cod.27.5b2"          
+# [10] "had.27.5b"            "pok.27.5b"            "bli.27.5b67"    
 clean_status <- clean_status %>% filter(StockKeyLabel %in% FO_2020FO_StockList_updated$StockKeyLabel)
 unique(clean_status$StockKeyLabel)
-# [1] "aru.27.5b6a"          "bli.27.5b67"          "cod.27.5b1"           "cod.27.5b2"           "ghl.27.561214"        "had.27.5b"
-# [7] "her.27.1-24a514a"     "lin.27.5b"            "mac.27.nea"           "pok.27.5b"            "usk.27.3a45b6a7-912b" "whb.27.1-91214"   
+# [1] "aru.27.5b6a"          "bli.27.5b67"          "cod.27.5b1"          
+# [4] "cod.27.5b2"           "ghl.27.561214"        "had.27.5b"           
+# [7] "her.27.1-24a514a"     "lin.27.5b"            "mac.27.nea"          
+# [10] "pok.27.5b"            "usk.27.3a45b6a7-912b" "whb.27.1-91214"    
 
 ## not sure if I need to run this
-sag_refpts <- sag_refpts %>% filter(StockKeyLabel %in% FO_2020FO_StockList_updated$StockKeyLabel)
-unique(sag_refpts$StockKeyLabel)
+# sag_refpts <- sag_refpts %>% filter(StockKeyLabel %in% FO_2020FO_StockList_updated$StockKeyLabel)
+# unique(sag_refpts$StockKeyLabel)
 
 
 write.taf(clean_sag, dir = "data")
