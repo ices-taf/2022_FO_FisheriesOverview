@@ -17,11 +17,11 @@ catch_trends <- read.taf("model/catch_trends.csv")
 clean_status <- read.taf("data/clean_status.csv")
 
 #set year and month for captions:
-cap_month = "October"
-cap_year <- 2022
+cap_month = "January"
+cap_year <- 2023
 # set year for plot claculations
-year_cap = "2022"
-year = 2022
+year_cap = "2023"
+year = 2023
 ecoreg = "FO"
 
 #~~~~~~~~~~~~~~~#
